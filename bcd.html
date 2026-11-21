@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Převod do BCD – David Uherek</title>
+  <meta name="description" content="Jednoduchý převodník desítkového čísla do kódu BCD.">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hlavicka">
+    <p class="logo">David Uherek</p>
+    <nav aria-label="Hlavní menu">
+      <ul>
+        <li><a href="index.html">Domů</a></li>
+        <li><a href="bcd.html" aria-current="page">Převod do BCD</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Převodník do BCD</h1>
+    <p>BCD (Binary-Coded Decimal) zapisuje číslo po jednotlivých číslicích kde každá desítková číslice dostane vlastní čtyři bity.</p>
+
+    <form id="prevod" class="prevod" novalidate>
+      <label for="cislo">Číslo (jen číslice 0–9)</label>
+      <input type="text" id="cislo" name="cislo" inputmode="numeric" maxlength="12" autocomplete="off" aria-describedby="chyba">
+      <small class="chyba" id="chyba"></small>
+      <button type="submit" class="tlacitko">Převést</button>
+    </form>
+
+    <div id="vysledek" role="status"></div>
+  </main>
+
+  <footer class="paticka">
+    <p>&copy; <span id="rok">2026</span> David Uherek (UHE0068)</p>
+  </footer>
+</body>
+</html>

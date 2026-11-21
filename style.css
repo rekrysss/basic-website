@@ -1,0 +1,113 @@
+/* Proměnné a témata (světlý / tmavý režim podle systému) */
+:root {
+  color-scheme: light dark;
+  --text: light-dark(#1c2b2a, #e6efee);
+  --pozadi: light-dark(#ffffff, #0f1c1b);
+  --karta: light-dark(#eef5f4, #18292a);
+  --akcent: light-dark(#00786f, #4fd1c5);
+  --na-akcentu: light-dark(#ffffff, #0f1c1b);
+  --okraj: light-dark(#8fa7a4, #4a6360);
+  --chyba: light-dark(#b3261e, #ff8a80);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--pozadi);
+}
+
+p { max-width: 65ch; }
+
+/* Hlavička a menu */
+.hlavicka {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 1rem;
+  border-bottom: 2px solid var(--akcent);
+}
+.logo { margin: 0; font-weight: 700; font-size: 1.25rem; }
+nav ul { display: flex; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+nav a { display: block; padding: 0.25rem 0.75rem; color: var(--akcent); }
+nav a[aria-current="page"] { font-weight: 700; }
+
+/* Obsah */
+main { max-width: 60rem; margin: 0 auto; padding: 1rem; }
+.hero { padding: 1.5rem 0; }
+h1 { margin: 0 0 0.75rem; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; }
+h2 { margin-top: 2.5rem; }
+h3 { margin-top: 0; }
+a { color: var(--akcent); }
+
+/* Karty */
+.karty { display: grid; gap: 1rem; }
+.karta { padding: 1rem; background: var(--karta); border-radius: 0.5rem; }
+.karta p { margin: 0; }
+
+/* Odpočet */
+.odpocet {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: 28rem;
+  text-align: center;
+}
+.odpocet div { padding: 0.75rem 0.25rem; background: var(--karta); border-radius: 0.5rem; }
+.odpocet strong { display: block; font-size: 1.75rem; color: var(--akcent); }
+
+/* Tlačítko */
+.tlacitko {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--na-akcentu);
+  background: var(--akcent);
+  border: 0;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tlacitko:hover { opacity: 0.9; }
+
+/* Převodník BCD */
+.prevod { max-width: 32rem; }
+.prevod label { display: block; font-weight: 600; }
+.prevod input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--pozadi);
+  border: 2px solid var(--okraj);
+  border-radius: 0.5rem;
+}
+.prevod [aria-invalid="true"] { border-color: var(--chyba); }
+.chyba { display: block; min-height: 1.25rem; color: var(--chyba); }
+.prevod .tlacitko { margin-top: 0.5rem; }
+
+.cifry { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cifry div { min-width: 4.5rem; padding: 0.75rem 0.5rem; text-align: center; background: var(--karta); border-radius: 0.5rem; }
+.cifry strong { display: block; font-size: 1.5rem; color: var(--akcent); }
+.cifry span { font-family: ui-monospace, monospace; }
+
+/* Viditelný fokus pro ovládání klávesnicí */
+:focus-visible { outline: 3px solid var(--akcent); outline-offset: 2px; }
+
+/* Patička */
+.paticka { padding: 1rem; text-align: center; border-top: 1px solid var(--okraj); }
+.paticka p { max-width: none; margin: 0; }
+
+/* Větší displeje (mobile-first) */
+@media (min-width: 768px) {
+  .hlavicka { padding: 1rem 2rem; }
+  main { padding: 1rem 2rem; }
+  .karty { grid-template-columns: repeat(3, 1fr); }
+}
